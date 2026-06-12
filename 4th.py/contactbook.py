@@ -1,44 +1,55 @@
-# Contact Book using Dictionary
+# Contact Book
 
-contacts = {
-    "Rahul": "9876543210",
-    "Priya": "9876543211",
-    "Aman": "9876543212"
-}
+contacts = {}
 
-# Add Contact
-contacts["Neha"] = "9876543213"
-print("After Adding Contact:")
-print(contacts)
+while True:
+    print("\n1. Add Contact")
+    print("2. Search Contact")
+    print("3. Update Contact")
+    print("4. Delete Contact")
+    print("5. Show All Contacts")
+    print("6. Exit")
 
-# Search Contact
-name = "Priya"
-if name in contacts:
-    print("\nContact Found:")
-    print(name, ":", contacts[name])
-else:
-    print("\nContact Not Found")
+    choice = int(input("Enter your choice: "))
 
-# Update Contact
-contacts["Aman"] = "9999999999"
-print("\nAfter Updating Aman:")
-print(contacts)
+    if choice == 1:
+        name = input("Enter name: ")
+        number = input("Enter phone number: ")
+        contacts[name] = number
+        print("Contact Added Successfully")
 
-# Delete Contact
-del contacts["Rahul"]
-print("\nAfter Deleting Rahul:")
-print(contacts)
+    elif choice == 2:
+        name = input("Enter name to search: ")
+        if name in contacts:
+            print("Phone Number:", contacts[name])
+        else:
+            print("Contact Not Found")
 
+    elif choice == 3:
+        name = input("Enter name to update: ")
+        if name in contacts:
+            number = input("Enter new phone number: ")
+            contacts[name] = number
+            print("Contact Updated Successfully")
+        else:
+            print("Contact Not Found")
 
-# Detect Two-Digit Numbers using Set
+    elif choice == 4:
+        name = input("Enter name to delete: ")
+        if name in contacts:
+            del contacts[name]
+            print("Contact Deleted Successfully")
+        else:
+            print("Contact Not Found")
 
-numbers = {5, 12, 45, 100, 8, 67, 23, 456}
+    elif choice == 5:
+        print("\nContacts List")
+        for name, number in contacts.items():
+            print(name, ":", number)
 
-two_digit = set()
+    elif choice == 6:
+        print("Exiting Contact Book...")
+        break
 
-for num in numbers:
-    if 10 <= num <= 99:
-        two_digit.add(num)
-
-print("\nOriginal Set:", numbers)
-print("Two-Digit Numbers:", two_digit)
+    else:
+        print("Invalid Choice")
