@@ -102,9 +102,8 @@ def display_patients():
         print(patient.display())
 
 
-# -----------------------------
-# Save Records to File
-# -----------------------------
+
+# Save Records to Fils
 def save_records():
     with open("patient_records.txt", "w") as file:
         for patient in patient_records.values():
@@ -113,9 +112,7 @@ def save_records():
     print("Records saved to file successfully!")
 
 
-# -----------------------------
-# Main Menu
-# -----------------------------
+# Main 
 while True:
     print("\n===== Hospital Management System =====")
     print("1. Add Patient")
