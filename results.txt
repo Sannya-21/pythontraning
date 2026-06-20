@@ -1,0 +1,5 @@
+EXAM RESULT REPORT
+--------------------------------------------------
+101 | Rahul | Total: 255 | Percentage: 85.0 | Grade: A
+102 | Priya | Total: 275 | Percentage: 91.67 | Grade: A+
+103 | Aman | Total: 217 | Percentage: 72.33 | Grade: B
