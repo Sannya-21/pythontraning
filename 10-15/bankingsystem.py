@@ -11,10 +11,11 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
 
+        print(f"\n₹{amount} deposited successfully.")
+        print(f"Updated Balance = ₹{self.balance}")
+
         with open("transactions.txt", "a") as file:
-            file.write(
-                f"Account {self.acc_no}: Deposited {amount}\n"
-            )
+            file.write(f"Deposited ₹{amount}\n")
 
     def withdraw(self, amount):
         if amount > self.balance:
@@ -24,40 +25,61 @@ class BankAccount:
 
         self.balance -= amount
 
+        print(f"\n₹{amount} withdrawn successfully.")
+        print(f"Updated Balance = ₹{self.balance}")
+
         with open("transactions.txt", "a") as file:
-            file.write(
-                f"Account {self.acc_no}: Withdrawn {amount}\n"
-            )
+            file.write(f"Withdrawn ₹{amount}\n")
 
     def check_balance(self):
-        return self.balance
+        print(f"\nCurrent Balance = ₹{self.balance}")
 
 
 # Account numbers stored in list
-account_numbers = [1001, 1002]
+account_numbers = [1001]
 
-# Customer accounts stored in dictionary
+# Customer details stored in dictionary
 customers = {
-    1001: {"name": "Ali", "balance": 5000},
-    1002: {"name": "Sara", "balance": 10000}
+    1001: {
+        "name": "Ali",
+        "balance": 5000
+    }
 }
 
-accounts = {}
+# Create Account Object
+acc = BankAccount(
+    1001,
+    customers[1001]["name"],
+    customers[1001]["balance"]
+)
 
-for acc_no in account_numbers:
-    accounts[acc_no] = BankAccount(
-        acc_no,
-        customers[acc_no]["name"],
-        customers[acc_no]["balance"]
-    )
+while True:
+    print("\n===== BANKING SYSTEM =====")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Exit")
 
-try:
-    accounts[1001].deposit(2000)
-    accounts[1001].withdraw(1000)
+    choice = int(input("Enter Choice: "))
 
-    print("Account Number:", accounts[1001].acc_no)
-    print("Customer Name :", accounts[1001].name)
-    print("Balance       :", accounts[1001].check_balance())
+    try:
+        if choice == 1:
+            amount = float(input("Enter Deposit Amount: "))
+            acc.deposit(amount)
 
-except InsufficientBalanceError as e:
-    print("Error:", e)
+        elif choice == 2:
+            amount = float(input("Enter Withdrawal Amount: "))
+            acc.withdraw(amount)
+
+        elif choice == 3:
+            acc.check_balance()
+
+        elif choice == 4:
+            print("Thank You for Using Banking System")
+            break
+
+        else:
+            print("Invalid Choice!")
+
+    except InsufficientBalanceError as e:
+        print("Error:", e)
