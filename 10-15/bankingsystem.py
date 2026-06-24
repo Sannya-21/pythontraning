@@ -32,7 +32,9 @@ account_numbers = [1001, 1002, 1003]
 customers = {
     1001: {"name": "Ali", "balance": 5000},
     1002: {"name": "Sara", "balance": 8000},
-    1003: {"name": "Ahmed", "balance": 12000}
+    1003: {"name": "Ahmed", "balance": 12000},
+    1004:{ "name": " sannya","balance": 10500000}
+    1005:{" name":" jasmeen", "balance": 100056000}
 }
 
 # Create account objects
